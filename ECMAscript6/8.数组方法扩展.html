@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    </style>
+    <script src=""></script>
+</head>
+<body>
+<ul id="demo">
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+
+<script type="text/javascript">
+    /**
+     *
+     * */
+    "use strict";
+    var main = {};//主挂载函数；
+    main.init = function () {//初始化函数；
+//        main.a();
+//        main.b();
+//        main.c();
+//        main.d();
+//        main.e();
+//        main.f();
+        main.g();
+        main.h();
+        main.i();
+        main.j();
+    };
+
+    main.a = function () {
+        var aLi = demo.getElementsByTagName("li");
+        console.log(aLi);
+        //aLi为类数组，不能用数组下的方法；数组=>类数组；
+        /*aLi.push(333);*/
+        var newLis = Array.prototype.slice.call(aLi);
+        newLis.pop();
+        console.log(newLis);
+    };
+    main.b = function () {
+        var arr = [];
+        var obj = {};
+        //检测类型；
+        //1. typeof
+        //2. constructor
+        //3. instanceOf  二元运算符
+        //obj instanceOf constructor   检测constructor的原型是否在在obj这个对象的原型链上
+        Object.prototype.abc = 10000;
+        console.log(this.abc);
+    };
+    main.c = function () {
+        console.log(Object.prototype.toString.call([1, 2, 3]));
+        console.log(Object.prototype.toString.call(function () {
+        }));
+        console.log(Object.prototype.toString.call(Math));
+        console.log(Object.prototype.toString.call(undefined));
+        console.log(Object.prototype.toString.call(null));
+    };
+    main.d = function () {
+        /*
+         Array.of()
+         作用：
+         将一组值转为数组
+         返回值：
+         新的数组
+         参数：
+         多个参数，作为新数组的每一项
+         这个方法可以弥补 Array(1),在初始化的时候向数组中放入一个1的不足，在构造函数中的只写一个数字意思是创建的数组的长度。
+         */
+        let b = 5;
+        console.log(Array.of(23, 423, 2432));
+        console.log(Array.of('呵呵', ++b, 2432));
+        console.log(Array.of());
+        console.log(Array.of(3));
+        /*数组实例的copyWithin()
+         * 数组实例的copyWithin方法，
+         * 在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），
+         * 然后返回当前数组。也就是说，使用这个方法，会修改当前数组。
+         *target（必需）：从该位置开始替换数据。
+         start（可选）：从该位置开始读取数据，默认为0。如果为负值，表示倒数。
+         end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+         *Array.prototype.copyWithin(target, start = 0, end = this.length)
+         * */
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3))
+
+    };
+    main.e = function () {
+        // 将3号位复制到0号位
+        console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4));// [4, 2, 3, 4, 5]
+        // -2相当于3号位，-1相当于4号位
+        console.log([1, 2, 3, 4, 5].copyWithin(0, -2, -1));// [4, 2, 3, 4, 5]
+        // 将3号位复制到0号位
+        console.log([].copyWithin.call({length: 5, 3: 1}, 0, 3));// {0: 1, 3: 1, length: 5}
+        // 将2号位到数组结束，复制到0号位
+        var i32a = new Int32Array([1, 2, 3, 4, 5]);
+        console.log(i32a.copyWithin(0, 2));// Int32Array [3, 4, 5, 4, 5]
+    };
+    main.f = function () {
+        //find设置条件，按条件返回；
+        console.log([1, 4, -5, 10].find((n) => n < 0));
+
+    };
+    main.g = function () {
+        /*
+         Array.fill()
+         作用：
+            填充数组,数组已有项会全部抹去
+         返回值：
+            被填充的数组
+         参数：
+             1. 要填充的值，不填则为undefined
+             2. 可选，起始位置 正数或负数，负数-1代表最后一位
+             3. 可选，结束位置 不写默认为最后一位
+         会改变原数组
+         */
+        var arr = [1,2,3,4];
+        arr.fill("a",1,3);
+        console.log( arr );
+
+    };
+    main.h = function () {
+//数组实例的findIndex方法的用法与find方法非常类似，
+// 返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
+        console.log([1, 5, 10, 15].findIndex(function(value, index, arr) {
+            return value > 9;
+        }))
+    };
+    main.i = function () {
+        /**
+         arr.map():
+         作用：
+            一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组。
+         返回值：
+            由回调函数的返回值组成的新数组。
+         参数：
+             第一个
+             回调函数
+             回调函数接收三个参数：循环的项，下标，引用的数组
+         第二个【可选】：指定回调函数中this的指向
+         不改变原数组
+         */
+        var arr=[1,2,3,4,5,6,7,8,9];//每一项+10返回新数组；
+        var newArr = arr.map(function (item,index,arr){
+//            console.log( item,index,arr );
+            return item+10
+        },arr);
+        console.log( arr );
+        console.log( newArr );
+
+    };
+    main.j= function () {
+        /**
+         * arr.filter():
+         *
+         *
+         *
+         *作用：
+         *  使用指定的函数测试所有元素，并创建一个包含所有通过测试的元素的新数组
+         *返回值：
+         *  通过测试的元素组成的新数组
+         *参数：
+         *  第一个
+         *回调函数
+         *  回调函数接收三个参数：循环的项，下标，引用的数组
+         *第二个【可选】：指定回调函数中this的指向
+         *不改变原数组
+         */
+        let arr=[1,2,3,4,5,6,7,8,9];
+       var newArr=arr.filter(function(item,index,arr){
+            return item>5
+       });
+        console.log(newArr);
+    };
+    /**
+     *arr.some(callback,[initialValue])
+     *只要有一个通过检测，返回true
+     *arr.every();
+     *方法测试数组的所有元素是否都通过了指定函数的测试
+     */
+    main.k=function(){
+        var arr = [1,2,3,4];
+
+        var bl = arr.some(function (item,index){
+            return item > 3
+        });
+
+        var bl2 = arr.every(function (item,index){
+            return item > 3
+        });
+
+        console.log( bl );
+        console.log( bl2 );
+
+
+    };
+
+    main.init();
+
+</script>
+</body>
+</html>

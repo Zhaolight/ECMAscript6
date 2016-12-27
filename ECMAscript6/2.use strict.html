@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+    <script src=""></script>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    /*
+     开启严格模式：
+     在一对script标签开始加上"use strict"
+     在某一个函数中加上"use strict"
+
+     注意点：
+     1. 直接调用函数，函数中的this就不指向window了，而是undefined
+     2. 使用call第一参数改变this指向，在es5中指向是window，在严格模式下执行传入的第一个参数
+     3. 形参不能重复声明，重复声明会报错
+     4. arguments不能追踪变化,不允许对arguments赋值
+     5. 声明变量必须显式的使用var来声明变量，不是用var回报错
+     6. 试图用delete删除变量会报错
+     7. 函数声明必须在顶层或函数作用域中，在非函数的代码块中会报错
+     es5中没有块级作用域 ，es6中有
+     */
+    "use strict";
+    var main = {};//主挂载函数；
+    main.init = function () {//初始化函数；
+        main.a();
+        main.b();
+    };
+
+
+
+    //功能函数a；
+    main.a = function () {
+        if (true) {
+            var a = 10;
+            let b = 20;
+        }
+     /*  console.log(b);*/
+    };
+    //功能函数b；
+    main.b = function () {
+        function fn() {
+            console.log(123);
+        }
+        if (true) {
+          /*  function fn2() {//函数声明必须在顶层或函数作用域中，在非函数的代码块中会报错
+                console.log(123);
+            }*/
+        }
+        fn();
+     /*   fn2();*/
+        console.log(this)
+
+    };
+    main.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    </style>
+    <script src=""></script>
+</head>
+<body>
+    <div id="div"></div>
+
+<script type="text/javascript">
+    /*
+     *
+     * */
+    "use strict";
+    var main = {};//主挂载函数；
+    main.init = function () {//初始化函数；
+//        main.a();
+//        main.b();
+//        main.c();
+//        main.d();
+//        main.e();
+          main.f();
+    };
+
+    main.a = function () {
+        let x="\u0061";
+        let y="\uD842\uDFB7";
+        let z="\u{20BB7}";
+        let l="\u{41}\u{42}\u{43}";
+        /*JavaScript允许采用\uxxxx形式表示一个字符，其中“xxxx”表示字符的码点。
+        \u0000——\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达。
+         码点放入大括号，就能正确解读该字符。
+         */
+        let m="中国人民银行";
+        console.log(m.charAt(0));
+        console.log(m.codePointAt());//ES6提供了codePointAt方法，能够正确处理4个字节储存的字符，返回一个字符的码
+        console.log(x,y,z,l);//a、吉、吉、ABC
+        console.log(String.fromCodePoint(0x20BB7));//可以识别字符码点的方法；
+    };
+    main.b = function () {
+        //let  i  of  str;遍历字符串的每一项；i为字符串遍历返回的每一项的结果；
+        let str="中国人民银行";
+        for (let i of str){
+            console.log(i);
+        };
+    /*console.log(str.at(0))*/
+    };
+    main.c = function () {
+    /* includes()：返回布尔值，表示是否找到了参数字符串。
+     startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
+       endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。*/
+    var s="Hello World!";
+    console.log(s.includes('H'));
+    console.log(s.startsWith("Hello",5));
+    console.log(s.endsWith());
+    console.log(s.repeat(2.9));//取整数部分的重复；
+    };
+    main.d=function(){
+       /*console.log('xxx'.padStart(2, 'ab') )*///该方法在ES6暂时无法运行；
+       /*console.log('xxx'.padEnd(2) )*///该方法在ES6暂时无法运行；
+    };
+    main.e=function(){
+     /*模板字符串（template string）是增强版的字符串，用反引号（`）标识。
+      *它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+      *代码中的字符串用反引号(`)表示，如果需要引入变量则使用${变量名}，
+      *在{}中可以进行运算，也可以引用对象属性。
+      *
+      */
+        let count=300;
+        var div=document.createElement('div');
+        let l=(window.innerWidth-count)/2;
+        let t=(window.innerHeight-count)/2;
+        div.innerHTML=`<div style="background:red;width:${count}px;height:${count}px;position:absolute;text-align:center;left:${l}px;top:${t}px">555</div>`
+        document.body.appendChild(div);
+    };
+    main.f=function() {
+        function fn(){
+            return "html"
+        };
+        let abc=20;
+         var html =`<ul>
+                        <li>${abc}</li>
+                        <li>${1+2}</li>
+                        <li>${fn()}</li>
+                   </ul>`
+        console.log(html);
+    };
+    main.init();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    </style>
+    <script src=""></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    /**
+     *严格模式；
+     * */
+    "use strict";
+    /**
+     *主挂载函数；
+     *
+     */
+    var main = {};
+    /**
+     *初始化函数；
+     *
+     */
+    main.init = function () {
+//        main.a();
+        main.b();
+        main.c();
+        main.d();
+        main.e();
+        main.f();
+    };
+
+    main.a = function () {
+        function fn(a,c=400,b=10){
+            console.log( b );
+            console.log( c );
+        }
+        fn(1,3000,100)
+
+    };
+    main.b = function () {
+        function fn(a,...abc){
+            //数组
+            console.log( abc );
+        }
+
+        fn(1,3000,100);
+    };
+    main.c = function () {
+   function fn(...abc){
+     //数组
+     console.log( abc );
+     }
+    fn(45454,5,4,5,4,5,4);
+    };
+    /**
+     * spread  ...  扩展运算符
+     *扩展运算符（spread）是三个点（...）。它好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。
+     */
+    main.d = function () {
+        var arr1 = [1,2,3,4];
+        var arr2 = [56,7,8,...arr1];
+        console.log(arr2 );
+    };
+    /**
+     *箭头函数
+     *=> 定义函数
+
+     *参数 => 返回值
+
+     *1、函数体内的this对象，绑定定义时所在的对象，而不是使用时所在的对象。
+     *2、不可以当作构造函数，不可以使用new命令，否则会抛出一个错误。
+     *3、该函数体内不存在arguments。
+     **/
+    main.e=function(){
+        setTimeout(()=>{
+           alert('这是一个箭头函数执行了！！');
+        },200)
+    };
+    main.f = function () {
+
+    };
+    main.init();
+
+</script>
+</body>
+</html>

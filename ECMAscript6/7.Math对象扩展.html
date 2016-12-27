@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    </style>
+    <script src=""></script>
+</head>
+<body>
+<div id="div"></div>
+
+<script type="text/javascript">
+    /**
+     *
+     * */
+    "use strict";
+    var main = {};//主挂载函数；
+    main.init = function () {//初始化函数；
+//        main.a();
+//        main.b();
+        main.c();
+        main.d();
+        main.e();
+        main.f();
+    };
+
+    main.a = function () {
+        //Math.trunc方法用于去除一个数的小数部分，返回整数部分。
+        //对于非数值，Math.trunc内部使用Number方法将其先转为数值。
+        console.log(Math.trunc(5.1));
+        console.log(Math.trunc('8.134'));
+    };
+    main.b = function () {
+        /* Math.sign()
+         Math.sign方法用来判断一个数到底是正数、负数、还是零。
+         参数为正数，返回+1；
+         参数为负数，返回-1；
+         参数为0，返回0；
+         参数为-0，返回-0;
+         其他值，返回NaN。
+         */
+        console.log(Math.sign(-5)); // -1
+        console.log(Math.sign(5));//1
+        console.log(Math.sign(5.2));//1
+        console.log(Math.sign(-5.2));//-1
+        console.log(Math.sign('5.5'));//1
+        console.log(Math.sign('-1.2'));//-1
+        console.log(Math.sign("true"));//NaN
+        console.log(Math.sign(true));//1
+    };
+    main.c = function () {
+        /*Math.cbrt() § ⇧
+         Math.cbrt方法用于计算一个数的立方根。
+         */
+        console.log(Math.cbrt('8')); // 2
+    };
+    main.d = function () {
+    /*（1） Math.expm1()
+       Math.expm1(x)返回ex - 1，即Math.exp(x) - 1。*/
+        console.log(Math.expm1(0));
+    /*Math.log10(x)返回以10为底的x的对数。如果x小于0，则返回NaN。*/
+        console.log(Math.log10(1));// 0
+        console.log(Math.log10(0));// -Infinity
+        console.log(Math.log10(-2));// NaN
+    };
+    main.e = function () {
+       /*
+        * Math.sinh(x) 返回x的双曲正弦（hyperbolic sine）
+        * Math.cosh(x) 返回x的双曲余弦（hyperbolic cosine）
+        * Math.tanh(x) 返回x的双曲正切（hyperbolic tangent）
+        * Math.asinh(x) 返回x的反双曲正弦（inverse hyperbolic sine）
+        * Math.acosh(x) 返回x的反双曲余弦（inverse hyperbolic cosine）
+        * Math.atanh(x) 返回x的反双曲正切（inverse hyperbolic tangent）
+        *
+        * */
+    };
+    main.f = function () {
+
+    };
+    main.init();
+
+</script>
+</body>
+</html>
